@@ -1,4 +1,13 @@
-<?php
+<html>
+	<head>
+		<title>Twitter</title>
+	</head>
+	<body>
+		<h1>Welcome To Twitter App</h1>
+		<div id="main">
+			<p>
+				<?php
+
 function linkify_twitter_status($status_text)
 {
   // linkify URLs
@@ -27,7 +36,7 @@ function linkify_twitter_status($status_text)
 
 
 $url = 'https://api.twitter.com/1/statuses/user_timeline/vaqasuddin.json';
-$c = curl_init($url);
+		$c = curl_init($url);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($c, CURLOPT_CONNECTTIMEOUT, 3);
         curl_setopt($c, CURLOPT_TIMEOUT, 30);
@@ -39,18 +48,18 @@ $c = curl_init($url);
         {
             if( $num-- === 0) break;
             $data[] = $tweet->text;
-            $data[] .= $tweet->source;
         }
         echo "<ul>";
         foreach($data as $text):?>
 
             <?php $final_tweet = linkify_twitter_status($text);?>
             <?php echo "<li>$final_tweet</li>"?>
+            
         <?php endforeach;?>
         
         <?php echo "</ul>"; ?>
-<?php
-//$status = $status[10]->text;
-//echo "before: ", $status, "\n";
-//echo "after: ", linkify_twitter_status($status), "\n";
-
+        
+			</p>
+		</div>
+	</body>
+</html>       
