@@ -39,6 +39,7 @@ $c = curl_init($url);
         {
             if( $num-- === 0) break;
             $data[] = $tweet->text;
+            $data[] .= $tweet->source;
         }
         echo "<ul>";
         foreach($data as $text):?>
